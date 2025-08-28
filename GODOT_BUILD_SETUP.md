@@ -123,6 +123,27 @@ pause
 
 **注意**：需要根据实际安装路径调整 `vcvarsall.bat` 的路径。
 
+### 步骤 4：创建启动脚本
+创建 `run_godot.bat` 文件来快速启动 Godot 编辑器：
+```batch
+@echo off
+echo 正在启动 Godot 编辑器...
+echo.
+
+REM 检查 Godot 可执行文件是否存在
+if exist "bin\godot.windows.editor.dev.x86_64.exe" (
+    echo 找到 Godot 编辑器，正在启动...
+    start "" "bin\godot.windows.editor.dev.x86_64.exe"
+    echo Godot 编辑器已启动！
+) else (
+    echo 错误：未找到 Godot 可执行文件！
+    echo 请先运行 build.bat 构建 Godot
+    pause
+    exit /b 1
+)
+pause
+```
+
 ## 构建命令
 
 ### 基本构建
@@ -188,6 +209,22 @@ scons platform=windows target=editor dev_build=yes
 2. 确保网络连接稳定（需要下载依赖）
 3. 构建过程中不要关闭命令提示符
 4. 如遇到权限问题，请以管理员身份运行
+
+## 快速使用
+
+### 构建 Godot
+```bash
+build.bat
+```
+
+### 启动 Godot 编辑器
+```bash
+run_godot.bat
+```
+
+### 在 VS Code 中构建
+- 按 `Ctrl+Shift+B` 运行构建任务
+- 或按 `F5` 启动调试
 
 ## 技术支持
 - Godot 官方文档：https://docs.godotengine.org/
