@@ -30,4 +30,3 @@ if %ERRORLEVEL% EQU 0 (
 )
 echo ========================================
 echo.
-pause
